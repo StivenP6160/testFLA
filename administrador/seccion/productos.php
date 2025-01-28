@@ -11,6 +11,38 @@ echo $txtNombre."<br/>";
 echo $txtImagen."<br/>";
 echo $accion."<br/>";
 
+$host="localhost";
+$bd="sitio";
+$usuario="root";
+$contrasenia="";
+
+try {
+    $conexion=new PDO("mysql:host=$host;dbname=$bd",$usuario,$contrasenia);
+    if($conexion){ echo "Conectado... a sistema";}
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+
+
+switch($accion){
+
+    //INSERT INTO `libros` (`id`, `nombre`, `imagen`) VALUES (NULL, 'Libro de php', 'imagen.jpg');
+
+    case "Agregar":
+        echo "Presionado botón agregar";
+        break;
+
+    case "Modificar":
+        echo "Presionado botón Modificar";
+        break;
+    
+    case "Cancelar":
+        echo "Presionado botoón Cancelar";
+        break;
+
+}
+
+
 ?>
 
 
