@@ -1,7 +1,8 @@
 <?php include("../template/cabecera.php"); ?>
+
 <?php
 
-$txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
+$txtID=(isset($_POST['textID']))?$_POST['textID']:"";
 $txtNombre=(isset($_POST['textNombre']))?$_POST['textNombre']:"";
 $txtImagen=(isset($_FILES['txtImagen']['name']))?$_FILES['txtImagen']['name']:"";
 $accion=(isset($_POST['accion']))?$_POST['accion']:"";
@@ -9,12 +10,29 @@ $accion=(isset($_POST['accion']))?$_POST['accion']:"";
 echo $txtID."<br/>";
 echo $txtNombre."<br/>";
 echo $txtImagen."<br/>";
-echo $accion."<br/>";
+
+switch($accion){
+
+    //INSERT INTO `libros` (`id`, `nombre`, `imagen`) VALUES (NULL, 'Libro de php', 'imagen.jpg');
+
+    case "Agregar":
+        echo "Presionado botón Agregar<br/>";
+        break;
+
+    case "Modificar":
+        echo "Presionado botón Modificar<br/>";
+        break;
+    
+    case "Cancelar":
+        echo "Presionado botón Cancelar<br/>";
+        break;
+
+}
 
 $host="localhost";
 $bd="sitio";
 $usuario="root";
-$contrasenia="";
+$contrasenia="Ti2023*";
 
 try {
     $conexion=new PDO("mysql:host=$host;dbname=$bd",$usuario,$contrasenia);
@@ -22,26 +40,6 @@ try {
 } catch (Exception $ex) {
     echo $ex->getMessage();
 }
-
-
-switch($accion){
-
-    //INSERT INTO `libros` (`id`, `nombre`, `imagen`) VALUES (NULL, 'Libro de php', 'imagen.jpg');
-
-    case "Agregar":
-        echo "Presionado botón agregar";
-        break;
-
-    case "Modificar":
-        echo "Presionado botón Modificar";
-        break;
-    
-    case "Cancelar":
-        echo "Presionado botoón Cancelar";
-        break;
-
-}
-
 
 ?>
 
@@ -61,7 +59,7 @@ switch($accion){
 
                     <div class = "form-group">
                         <label for="textID">ID:</label>
-                            
+                        <input type="text" class="form-control" name="textID" id="textID" placeholder="ID">    
                     </div>
 
                     <div class = "form-group">
